@@ -1,0 +1,195 @@
+[
+  {
+    "modelParams": {
+      "name": "Base rate fallacy",
+      "description": "Imagine running a disease test on a population in which 0.1% are infected. The test has a sensitivity of 100% (probability of a positive test given that the person has the disease) and specificity of 95% (probability of negative test when the person is well). If the test is positive, what is the probability a person is sick?",
+      "steps": 1,
+      "method": "rejection",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b1682787",
+        "name": "Probability of event",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "0.1",
+        "units": "%",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 35,
+          "y": 253
+        }
+      },
+      {
+        "id": "b59383790",
+        "name": "Test sensitivity",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "100",
+        "units": "%",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -261,
+          "y": 57
+        }
+      },
+      {
+        "id": "b73264460",
+        "name": "Test specificity",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "95",
+        "units": "%",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -55,
+          "y": -256
+        }
+      },
+      {
+        "id": "b94144129",
+        "name": "Observed test result",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "true",
+        "units": "",
+        "dataType": "boolean",
+        "dataCategories": "",
+        "minimized": false,
+        "icon": "",
+        "color": "#61c900",
+        "size": 40,
+        "pos": {
+          "x": 252,
+          "y": -29
+        }
+      },
+      {
+        "id": "b16284577",
+        "distribution": "Bernoulli",
+        "name": "Event",
+        "once": false,
+        "params": {
+          "p": "Probability of event / 100"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "icon": "",
+        "color": "#eaac0c",
+        "size": 40,
+        "pos": {
+          "x": 34,
+          "y": 126
+        }
+      },
+      {
+        "id": "b12980152",
+        "distribution": "Bernoulli",
+        "name": "True positive",
+        "once": false,
+        "params": {
+          "p": "Test sensitivity / 100"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "icon": "",
+        "color": "#eaac0c",
+        "size": 40,
+        "pos": {
+          "x": -135,
+          "y": 35
+        }
+      },
+      {
+        "id": "b47678101",
+        "distribution": "Bernoulli",
+        "name": "True negative",
+        "once": false,
+        "params": {
+          "p": "Test specificity / 100"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "icon": "",
+        "color": "#eaac0c",
+        "size": 40,
+        "pos": {
+          "x": -40,
+          "y": -130
+        }
+      },
+      {
+        "id": "b18936580",
+        "name": "Test result",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "If..Else",
+        "params": {
+          "condition": "Event",
+          "true": "True positive",
+          "false": "!True negative"
+        },
+        "value": "Event || !Correct measure",
+        "units": "",
+        "minimized": false,
+        "icon": "",
+        "color": "#0097cc",
+        "size": 40,
+        "pos": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "id": "b24040960",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Test result == Observed test result",
+        "minimized": false,
+        "pos": {
+          "x": 127,
+          "y": -46
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": "100000"
+    }
+  }
+]

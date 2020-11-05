@@ -1,0 +1,114 @@
+[
+  {
+    "modelParams": {
+      "name": "Main",
+      "description": "",
+      "steps": 1,
+      "method": "rejection",
+      "include": []
+    },
+    "blocks": [
+      {
+        "id": "b54758174",
+        "name": "K",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "10",
+        "units": "",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -63,
+          "y": 98
+        }
+      },
+      {
+        "id": "b58900563",
+        "distribution": "Uniform",
+        "name": "sigma",
+        "once": false,
+        "params": {
+          "a": "0",
+          "b": "10"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 97,
+          "y": 93
+        }
+      },
+      {
+        "id": "b7302754",
+        "distribution": "Gaussian",
+        "name": "mu",
+        "once": false,
+        "params": {
+          "mu": "0",
+          "sigma": "sigma"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "K",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 54,
+          "y": -21
+        }
+      },
+      {
+        "id": "b70191421",
+        "distribution": "RandomInteger",
+        "name": "c",
+        "once": false,
+        "params": {
+          "n": "K"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -148,
+          "y": 9
+        }
+      },
+      {
+        "id": "b25942064",
+        "distribution": "Gaussian",
+        "name": "x",
+        "once": false,
+        "params": {
+          "mu": "mu[c]",
+          "sigma": "1"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -34,
+          "y": -106
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

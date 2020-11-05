@@ -1,0 +1,231 @@
+[
+  {
+    "modelParams": {
+      "name": "Bayesian t-test",
+      "description": "Estimate difference between two groups using Bayesian inference. Data and priors from the R's package BEST.",
+      "steps": 1,
+      "method": "MCMC",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b70288946",
+        "name": "A",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "5.77,5.33,4.59,4.33,3.66,4.48",
+        "units": "",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 125,
+          "y": -239
+        }
+      },
+      {
+        "id": "b96429828",
+        "name": "B",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "3.88,3.55,3.29,2.59,2.33,3.59",
+        "units": "",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 13,
+          "y": 242
+        }
+      },
+      {
+        "id": "b96069607",
+        "distribution": "Gaussian",
+        "name": "mu1_prior",
+        "once": false,
+        "params": {
+          "mu": "6",
+          "sigma": "2"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -43,
+          "y": -147
+        }
+      },
+      {
+        "id": "b82570461",
+        "distribution": "Gaussian",
+        "name": "mu2_prior",
+        "once": false,
+        "params": {
+          "mu": "6",
+          "sigma": "2"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -147,
+          "y": 14
+        }
+      },
+      {
+        "id": "b85313105",
+        "distribution": "Uniform",
+        "name": "std1_prior",
+        "once": false,
+        "params": {
+          "a": "0",
+          "b": "100"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": true,
+        "pos": {
+          "x": 228,
+          "y": -83
+        }
+      },
+      {
+        "id": "b18849005",
+        "distribution": "Uniform",
+        "name": "std2_prior",
+        "once": false,
+        "params": {
+          "a": "0",
+          "b": "100"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": true,
+        "pos": {
+          "x": -171,
+          "y": 200
+        }
+      },
+      {
+        "id": "b21126481",
+        "distribution": "Gaussian",
+        "name": "nu_prior",
+        "once": false,
+        "params": {
+          "mu": "30",
+          "sigma": "20"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 177,
+          "y": 118
+        }
+      },
+      {
+        "id": "b7561856",
+        "name": "nu",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {},
+        "value": "Math.abs(nu_prior)",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 63,
+          "y": 40
+        }
+      },
+      {
+        "id": "b32413874",
+        "customLoop": false,
+        "distribution": "StudentT",
+        "loopStart": "",
+        "loopEnd": "",
+        "params": {
+          "df": "nu",
+          "location": "mu1_prior",
+          "scale": "std1_prior"
+        },
+        "type": "Observer",
+        "typeCode": 4,
+        "value": "A",
+        "minimized": false,
+        "pos": {
+          "x": 91,
+          "y": -102
+        }
+      },
+      {
+        "id": "b4959420",
+        "customLoop": false,
+        "distribution": "StudentT",
+        "loopStart": "",
+        "loopEnd": "",
+        "params": {
+          "df": "nu",
+          "location": "mu2_prior",
+          "scale": "std2_prior"
+        },
+        "type": "Observer",
+        "typeCode": 4,
+        "value": "B",
+        "minimized": false,
+        "pos": {
+          "x": -56,
+          "y": 121
+        }
+      },
+      {
+        "id": "b5864009",
+        "name": "Diff",
+        "history": false,
+        "show": true,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {},
+        "value": "mu1_prior - mu2_prior",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -163,
+          "y": -112
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": "4",
+      "samples": "10000",
+      "burn": "2000",
+      "lag": "10"
+    }
+  }
+]

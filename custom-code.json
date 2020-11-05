@@ -1,0 +1,17 @@
+[
+  {
+    "modelParams": {
+      "name": "Custom code",
+      "description": "",
+      "steps": 1,
+      "method": "forward",
+      "customCode": "var x = gaussian(0,1)\nvar y = x + gaussian(0,1)\nreturn {x,y}",
+      "include": []
+    },
+    "methodParams": {
+      "chains": "4",
+      "samples": 1000
+    },
+    "blocks": []
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "modelParams": {
+      "name": "Abbot's Puzzle",
+      "description": "The Abbot's Puzzle from \"Amusements in Mathematics, Dudeney\", n 110. If 100 bushels of corn were distributed among 100 people in such a manner that each man received three bushels, each woman two, and each child half a bushel, how many men, women, and children were there? Extra condition: there are five times as many women as men.",
+      "steps": 1,
+      "method": "smt",
+      "table": false,
+      "customCode": "",
+      "include": []
+    },
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    },
+    "blocks": [
+      {
+        "type": "Data",
+        "name": "Men",
+        "show": true,
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "dataType": "integer",
+        "units": "",
+        "id": "b3388807",
+        "minimized": true,
+        "pos": {
+          "x": -100,
+          "y": 14
+        }
+      },
+      {
+        "type": "Data",
+        "name": "Women",
+        "show": true,
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "dataType": "integer",
+        "units": "",
+        "id": "b71986848",
+        "minimized": true,
+        "pos": {
+          "x": 85,
+          "y": 21
+        }
+      },
+      {
+        "type": "Data",
+        "name": "Children",
+        "show": true,
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "dataType": "integer",
+        "units": "",
+        "id": "b42660821",
+        "minimized": false,
+        "pos": {
+          "x": 29,
+          "y": 33
+        }
+      },
+      {
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Men + Women + Children == 100",
+        "id": "b23661611",
+        "minimized": false,
+        "pos": {
+          "x": -18,
+          "y": 126
+        }
+      },
+      {
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Men * 3 + Women * 2 + Children * 0.5 == 100",
+        "id": "b75314703",
+        "minimized": false,
+        "pos": {
+          "x": 32,
+          "y": -78
+        }
+      },
+      {
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Men * 5 == Women",
+        "id": "b24869568",
+        "minimized": false,
+        "pos": {
+          "x": -57,
+          "y": -80
+        }
+      }
+    ]
+  }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "modelParams": {
+      "name": "Mrs Timpkin's Age",
+      "description": "When the Timpkinses married eighteen years ago, Timpkins was three times as old as his wife, and today he is just twice as old as she. How old is Mrs. Timpkin? (From \"Amusements in Mathematics, Dudeney\", number 43) ",
+      "steps": 1,
+      "method": "smt",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b16913234",
+        "name": "T",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -70,
+          "y": -38
+        }
+      },
+      {
+        "id": "b76529694",
+        "name": "W",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 66,
+          "y": 50
+        }
+      },
+      {
+        "id": "b75101725",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "T - 18 == 3 * (W - 18) ",
+        "minimized": false,
+        "pos": {
+          "x": 47,
+          "y": -66
+        }
+      },
+      {
+        "id": "b34345817",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "T == 2 * W",
+        "minimized": false,
+        "pos": {
+          "x": -48,
+          "y": 79
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

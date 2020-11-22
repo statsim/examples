@@ -1,0 +1,113 @@
+[
+  {
+    "modelParams": {
+      "name": "Friedman1",
+      "description": "Generate the “Friedman1” regression problem. Number of features has to be more than or equal to 5.",
+      "steps": 1,
+      "method": "forward",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b14669636",
+        "name": "Features",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "10",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": true,
+        "pos": {
+          "x": 73,
+          "y": -159
+        }
+      },
+      {
+        "id": "b53851285",
+        "name": "Sigma",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "1",
+        "units": "",
+        "dataType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 163,
+          "y": 63
+        }
+      },
+      {
+        "id": "b69522219",
+        "distribution": "Uniform",
+        "name": "X",
+        "once": false,
+        "params": {
+          "a": "0",
+          "b": "1"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "Features",
+        "units": "",
+        "minimized": true,
+        "pos": {
+          "x": -109,
+          "y": -82
+        }
+      },
+      {
+        "id": "b45222697",
+        "distribution": "Gaussian",
+        "name": "Noise",
+        "once": false,
+        "params": {
+          "mu": "0",
+          "sigma": "Sigma"
+        },
+        "show": false,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 60,
+          "y": 5
+        }
+      },
+      {
+        "id": "b56827669",
+        "name": "y",
+        "history": false,
+        "show": true,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {},
+        "value": "10 * Math.sin(Math.PI * X[0] * X[1]) + 20 * Math.pow(X[2] - 0.5, 2) + 10 * X[3] + 5 * X[4] + Noise",
+        "units": "",
+        "dataType": "",
+        "minimized": false,
+        "pos": {
+          "x": -56,
+          "y": 23
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

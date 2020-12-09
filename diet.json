@@ -1,0 +1,209 @@
+[
+  {
+    "modelParams": {
+      "name": "Diet",
+      "description": "Standard Operations Research example.\nMinimize the cost for the products. From https://github.com/hakank/hakank/blob/master/z3/diet.py",
+      "steps": 1,
+      "method": "smt",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b73692334",
+        "name": "Cake",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 48,
+          "y": 125
+        }
+      },
+      {
+        "id": "b23697779",
+        "name": "Icecream",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 97,
+          "y": 9
+        }
+      },
+      {
+        "id": "b61240941",
+        "name": "Cola",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 0,
+          "y": -119
+        }
+      },
+      {
+        "id": "b65323307",
+        "name": "Cheesecake",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -146,
+          "y": -22
+        }
+      },
+      {
+        "id": "b95872939",
+        "name": "Cost",
+        "history": false,
+        "show": true,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {},
+        "value": "50 * Cake + 20 * Icecream + 30 * Cola + 80 * Cheesecake",
+        "units": "",
+        "dataType": "integer",
+        "minimized": false,
+        "pos": {
+          "x": -77,
+          "y": 114
+        }
+      },
+      {
+        "id": "b42762516",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Cake > 0",
+        "minimized": false,
+        "pos": {
+          "x": 127,
+          "y": 266
+        }
+      },
+      {
+        "id": "b55561768",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Cola > 0",
+        "minimized": false,
+        "pos": {
+          "x": 34,
+          "y": -281
+        }
+      },
+      {
+        "id": "b31160173",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Icecream > 0",
+        "minimized": false,
+        "pos": {
+          "x": 266,
+          "y": 25
+        }
+      },
+      {
+        "id": "b71515172",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Cheesecake > 0",
+        "minimized": false,
+        "pos": {
+          "x": -301,
+          "y": -77
+        }
+      },
+      {
+        "id": "b22705434",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "400 * Cake + 200 * Icecream + 150 * Cola + 500 * Cheesecake >= 500",
+        "minimized": false,
+        "pos": {
+          "x": 77,
+          "y": -36
+        }
+      },
+      {
+        "id": "b19633013",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "3 * Cake + 2 * Icecream + 0 * Cola + 0 * Cheesecake >= 6",
+        "minimized": false,
+        "pos": {
+          "x": -91,
+          "y": -8
+        }
+      },
+      {
+        "id": "b15802476",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "2 * Cake + 2 * Icecream + 4 * Cola + 4 * Cheesecake >= 10",
+        "minimized": false,
+        "pos": {
+          "x": -16,
+          "y": -81
+        }
+      },
+      {
+        "id": "b77167169",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "2 * Cake + 4 * Icecream + 1 * Cola + 5 * Cheesecake >= 8",
+        "minimized": false,
+        "pos": {
+          "x": -12,
+          "y": 48
+        }
+      },
+      {
+        "id": "b12375323",
+        "type": "Optimize",
+        "typeCode": 8,
+        "value": "Cost",
+        "optimizationType": "minimize",
+        "minimized": false,
+        "pos": {
+          "x": -175,
+          "y": 245
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

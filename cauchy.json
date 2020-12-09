@@ -1,0 +1,39 @@
+[
+  {
+    "modelParams": {
+      "name": "Cauchy distribution",
+      "description": "Generate random samples from the Cauchy disribution",
+      "steps": 1,
+      "method": "forward",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b88267900",
+        "distribution": "Cauchy",
+        "name": "x",
+        "once": false,
+        "params": {
+          "location": "0",
+          "scale": "1"
+        },
+        "show": true,
+        "type": "Random Variable",
+        "typeCode": 0,
+        "dims": "1",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 9,
+          "y": 50
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

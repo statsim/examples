@@ -1,0 +1,187 @@
+[
+  {
+    "modelParams": {
+      "name": "Bananas problem",
+      "description": "In three dollars, you get 5 bananas, in five dollars, 7 oranges, in seven dollars, 9 mangoes and in nine dollars, three apples, I need to purchase 100 fruits in 100 dollars. All type of fruits need to be purchased but banana and apple should be of minimum quantity. From https://github.com/hakank",
+      "steps": 1,
+      "method": "smt",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b33322186",
+        "name": "Bananas",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 81,
+          "y": 78
+        }
+      },
+      {
+        "id": "b62679176",
+        "name": "Oranges",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 143,
+          "y": -116
+        }
+      },
+      {
+        "id": "b97686590",
+        "name": "Mangoes",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -75,
+          "y": -171
+        }
+      },
+      {
+        "id": "b65012398",
+        "name": "Apples",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "",
+        "units": "",
+        "dataType": "integer",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -110,
+          "y": 32
+        }
+      },
+      {
+        "id": "b90398396",
+        "name": "Sum",
+        "history": false,
+        "show": true,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {},
+        "value": "Bananas + Apples",
+        "units": "",
+        "dataType": "integer",
+        "minimized": false,
+        "pos": {
+          "x": -40,
+          "y": 165
+        }
+      },
+      {
+        "id": "b58424215",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Bananas >= 1",
+        "minimized": false,
+        "pos": {
+          "x": 196,
+          "y": 163
+        }
+      },
+      {
+        "id": "b49414097",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Oranges >= 1",
+        "minimized": false,
+        "pos": {
+          "x": 277,
+          "y": -138
+        }
+      },
+      {
+        "id": "b55021536",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Mangoes >= 1",
+        "minimized": false,
+        "pos": {
+          "x": -170,
+          "y": -268
+        }
+      },
+      {
+        "id": "b17914328",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Apples >= 1",
+        "minimized": false,
+        "pos": {
+          "x": -252,
+          "y": 55
+        }
+      },
+      {
+        "id": "b18836415",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "3 * Bananas / 5 + 5 * Oranges / 7 + 7 * Mangoes / 9 + 9 * Apples / 3 == 100",
+        "minimized": false,
+        "pos": {
+          "x": 19,
+          "y": -83
+        }
+      },
+      {
+        "id": "b97972616",
+        "type": "Condition",
+        "typeCode": 5,
+        "value": "Bananas + Oranges + Mangoes + Apples == 100",
+        "minimized": false,
+        "pos": {
+          "x": 6,
+          "y": -29
+        }
+      },
+      {
+        "id": "b5551225",
+        "type": "Optimize",
+        "typeCode": 8,
+        "value": "Sum",
+        "optimizationType": "minimize",
+        "minimized": false,
+        "pos": {
+          "x": -72,
+          "y": 295
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

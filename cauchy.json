@@ -2,7 +2,7 @@
   {
     "modelParams": {
       "name": "Cauchy distribution",
-      "description": "Generate random samples from the Cauchy disribution",
+      "description": "Generate random samples from the Cauchy distribution",
       "steps": 1,
       "method": "forward",
       "include": [],
@@ -11,29 +11,71 @@
     },
     "blocks": [
       {
-        "id": "b88267900",
+        "id": "b40820571",
+        "name": "location",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "0",
+        "min": "",
+        "max": "",
+        "units": "",
+        "dataType": "integer",
+        "elType": "",
+        "dataCategories": "",
+        "minimized": true,
+        "pos": {
+          "x": -103,
+          "y": 48
+        }
+      },
+      {
+        "id": "b36576124",
+        "name": "scale",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "1",
+        "min": "0",
+        "max": "",
+        "units": "",
+        "dataType": "integer",
+        "elType": "",
+        "dataCategories": "",
+        "minimized": true,
+        "pos": {
+          "x": 111,
+          "y": -25
+        }
+      },
+      {
+        "id": "b86909699",
         "distribution": "Cauchy",
         "name": "x",
         "once": false,
         "params": {
-          "location": "0",
-          "scale": "1"
+          "location": "location",
+          "scale": "scale"
         },
         "show": true,
         "type": "Random Variable",
         "typeCode": 0,
         "dims": "1",
         "units": "",
-        "minimized": false,
+        "minimized": true,
         "pos": {
-          "x": 9,
-          "y": 50
+          "x": -1,
+          "y": -4
         }
       }
     ],
     "methodParams": {
       "chains": 1,
-      "samples": 1000
+      "samples": "1000"
     }
   }
 ]

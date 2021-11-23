@@ -1,0 +1,118 @@
+[
+  {
+    "modelParams": {
+      "name": "Logistic map",
+      "description": "X[t+1] = R * X[t] * (1 - X[t])",
+      "steps": "50",
+      "method": "deterministic",
+      "include": [],
+      "table": false,
+      "customCode": ""
+    },
+    "blocks": [
+      {
+        "id": "b46039923",
+        "name": "R",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "4",
+        "min": "",
+        "max": "",
+        "units": "",
+        "dataType": "",
+        "elType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -47,
+          "y": -90
+        }
+      },
+      {
+        "id": "b99624969",
+        "name": "Xstart",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "0.1000001",
+        "min": "",
+        "max": "",
+        "units": "",
+        "dataType": "float",
+        "elType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": -65,
+          "y": 129
+        }
+      },
+      {
+        "id": "b30593542",
+        "name": "Ystart",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": true,
+        "dims": "",
+        "value": "0.1000002",
+        "min": "",
+        "max": "",
+        "units": "",
+        "dataType": "float",
+        "elType": "",
+        "dataCategories": "",
+        "minimized": false,
+        "pos": {
+          "x": 153,
+          "y": 27
+        }
+      },
+      {
+        "id": "b19674613",
+        "initialValue": "Xstart",
+        "history": true,
+        "name": "X",
+        "show": true,
+        "type": "Accumulator",
+        "typeCode": 3,
+        "value": "R * X * (1 - X) - X",
+        "min": "",
+        "max": "",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": -113,
+          "y": 13
+        }
+      },
+      {
+        "id": "b11816920",
+        "initialValue": "Ystart",
+        "history": true,
+        "name": "Y",
+        "show": true,
+        "type": "Accumulator",
+        "typeCode": 3,
+        "value": "R * Y * (1 - Y) - Y",
+        "min": "",
+        "max": "",
+        "units": "",
+        "minimized": false,
+        "pos": {
+          "x": 36,
+          "y": -7
+        }
+      }
+    ],
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]

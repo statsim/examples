@@ -1,7 +1,7 @@
 [
   {
     "modelParams": {
-      "name": "Main",
+      "name": "model",
       "description": "",
       "steps": 1,
       "method": "MCMC",
@@ -12,8 +12,8 @@
     },
     "blocks": [
       {
-        "id": "n_a13fc43",
-        "name": "messages",
+        "id": "n_6e5b6ea",
+        "name": "msg",
         "show": false,
         "type": "Data",
         "typeCode": 2,
@@ -27,17 +27,55 @@
         "elType": "",
         "dataCategories": "",
         "posFlow": {
-          "x": 369.7411866260815,
-          "y": 1434.3407354851188
+          "x": -29.721568652205324,
+          "y": 1734.4733355896929
         }
       },
       {
-        "id": "n_1fc03f2",
+        "id": "n_bc58edb",
+        "name": "msg_total",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Length",
+        "params": {
+          "input": "msg"
+        },
+        "value": "",
+        "units": "",
+        "dataType": "",
+        "posFlow": {
+          "x": 275.23155705630495,
+          "y": 1296.3664850252096
+        }
+      },
+      {
+        "id": "n_30e2338",
+        "name": "msg_mean",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Reduce mean",
+        "params": {
+          "input": "msg"
+        },
+        "value": "",
+        "units": "",
+        "dataType": "",
+        "posFlow": {
+          "x": 740.3761852356043,
+          "y": 1766.7243984387983
+        }
+      },
+      {
+        "id": "n_c4ea4df",
         "distribution": "RandomInteger",
         "name": "tau",
         "once": false,
         "params": {
-          "n": "messages"
+          "n": "msg_total"
         },
         "show": true,
         "type": "Variable",
@@ -45,72 +83,77 @@
         "dims": 1,
         "units": "",
         "posFlow": {
-          "x": 677.2699926235105,
-          "y": 810.9475081334721
+          "x": 555.7869760871096,
+          "y": 796.0720367208515
         },
-        "n": "messages"
+        "n": "msg_total"
       },
       {
-        "id": "n_f9e8c55",
-        "name": "messages1",
+        "id": "n_68ee7ce",
+        "name": "msg_1",
         "history": false,
         "show": false,
         "type": "Expression",
         "typeCode": 1,
-        "expressionType": "Custom",
+        "expressionType": "Slice",
         "params": {
-          "expression": "messages.slice(0, tau)"
+          "input": "msg",
+          "start": 0,
+          "end": "tau"
         },
         "value": "",
         "units": "",
         "dataType": "",
         "posFlow": {
           "x": 1050,
-          "y": 602.6697650891366
+          "y": 682.0056126231127
         }
       },
       {
-        "id": "n_f90a46b",
-        "name": "messages2",
+        "id": "n_d0b82b4",
+        "name": "msg_2",
         "history": false,
         "show": false,
         "type": "Expression",
         "typeCode": 1,
-        "expressionType": "Custom",
+        "expressionType": "Slice",
         "params": {
-          "expression": "messages.slice(tau)"
+          "input": "msg",
+          "start": "tau",
+          "end": "msg_total"
         },
         "value": "",
         "units": "",
         "dataType": "",
         "posFlow": {
-          "x": 1050,
-          "y": 1000
+          "x": 1047.5207547645632,
+          "y": 1103.5238681936469
         }
       },
       {
-        "id": "n_b1f0a5a",
+        "id": "n_217ee32",
         "name": "alpha",
         "history": false,
         "show": false,
         "type": "Expression",
         "typeCode": 1,
-        "expressionType": "Custom",
+        "expressionType": "Divide",
         "params": {
-          "expression": "1 / listMean(messages)"
+          "a": 1,
+          "b": "msg_mean"
         },
         "value": "",
         "units": "",
         "dataType": "",
         "posFlow": {
-          "x": 1048.4280678150624,
-          "y": 1403.103866428908
+          "x": 1045.021668885364,
+          "y": 1766.9348135752696
         }
       },
       {
-        "id": "n_08304c9",
+        "id": "n_90f0d95",
         "distribution": "Exponential",
-        "name": "lambda1",
+        "name": "lambda_1",
         "once": false,
         "params": {
           "a": "alpha"
@@ -127,9 +170,9 @@
         "a": "alpha"
       },
       {
-        "id": "n_2db3b0d",
+        "id": "n_27adc62",
         "distribution": "Exponential",
-        "name": "lambda2",
+        "name": "lambda_2",
         "once": false,
         "params": {
           "a": "alpha"
@@ -140,46 +183,46 @@
         "dims": 1,
         "units": "",
         "posFlow": {
-          "x": 1447.4832342392872,
-          "y": 1748.84618658035
+          "x": 1438.7693579816873,
+          "y": 1770.9552296165277
         },
         "a": "alpha"
       },
       {
-        "id": "n_68d4ce1",
+        "id": "n_3ae60e5",
         "customLoop": false,
         "distribution": "Poisson",
         "loopStart": "",
         "loopEnd": "",
         "params": {
-          "mu": "lambda1"
+          "mu": "lambda_1"
         },
         "type": "Observer",
         "typeCode": 4,
-        "value": "messages1",
+        "value": "msg_1",
         "posFlow": {
           "x": 1929.8845548315612,
           "y": 851.5712964444482
         },
-        "mu": "lambda1"
+        "mu": "lambda_1"
       },
       {
-        "id": "n_3f3df52",
+        "id": "n_0f467cb",
         "customLoop": false,
         "distribution": "Poisson",
         "loopStart": "",
         "loopEnd": "",
         "params": {
-          "mu": "lambda2"
+          "mu": "lambda_2"
         },
         "type": "Observer",
         "typeCode": 4,
-        "value": "messages2",
+        "value": "msg_2",
         "posFlow": {
           "x": 1926.3432251296124,
           "y": 1103.6079589699666
         },
-        "mu": "lambda2"
+        "mu": "lambda_2"
       }
     ],
     "methodParams": {

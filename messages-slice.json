@@ -1,0 +1,465 @@
+[
+  {
+    "modelParams": {
+      "name": "Main",
+      "description": "",
+      "steps": 1,
+      "method": "MCMC",
+      "include": [],
+      "table": false,
+      "customCode": "",
+      "type": "flow"
+    },
+    "blocks": [
+      {
+        "id": "n_a13fc43",
+        "name": "messages",
+        "show": false,
+        "type": "Data",
+        "typeCode": 2,
+        "useAsParameter": false,
+        "dims": "",
+        "value": "data.m",
+        "min": "",
+        "max": "",
+        "units": "",
+        "dataType": "proxy",
+        "elType": "",
+        "dataCategories": "",
+        "posFlow": {
+          "x": 369.7411866260815,
+          "y": 1434.3407354851188
+        }
+      },
+      {
+        "id": "n_1fc03f2",
+        "distribution": "RandomInteger",
+        "name": "tau",
+        "once": false,
+        "params": {
+          "n": "messages"
+        },
+        "show": true,
+        "type": "Variable",
+        "typeCode": 0,
+        "dims": 1,
+        "units": "",
+        "posFlow": {
+          "x": 677.2699926235105,
+          "y": 810.9475081334721
+        },
+        "n": "messages"
+      },
+      {
+        "id": "n_f9e8c55",
+        "name": "messages1",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {
+          "expression": "messages.slice(0, tau)"
+        },
+        "value": "",
+        "units": "",
+        "dataType": "",
+        "posFlow": {
+          "x": 1050,
+          "y": 602.6697650891366
+        }
+      },
+      {
+        "id": "n_f90a46b",
+        "name": "messages2",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {
+          "expression": "messages.slice(tau)"
+        },
+        "value": "",
+        "units": "",
+        "dataType": "",
+        "posFlow": {
+          "x": 1050,
+          "y": 1000
+        }
+      },
+      {
+        "id": "n_b1f0a5a",
+        "name": "alpha",
+        "history": false,
+        "show": false,
+        "type": "Expression",
+        "typeCode": 1,
+        "expressionType": "Custom",
+        "params": {
+          "expression": "1 / listMean(messages)"
+        },
+        "value": "",
+        "units": "",
+        "dataType": "",
+        "posFlow": {
+          "x": 1048.4280678150624,
+          "y": 1403.103866428908
+        }
+      },
+      {
+        "id": "n_08304c9",
+        "distribution": "Exponential",
+        "name": "lambda1",
+        "once": false,
+        "params": {
+          "a": "alpha"
+        },
+        "show": true,
+        "type": "Variable",
+        "typeCode": 0,
+        "dims": 1,
+        "units": "",
+        "posFlow": {
+          "x": 1445.7558055955928,
+          "y": 1364.0181046880382
+        },
+        "a": "alpha"
+      },
+      {
+        "id": "n_2db3b0d",
+        "distribution": "Exponential",
+        "name": "lambda2",
+        "once": false,
+        "params": {
+          "a": "alpha"
+        },
+        "show": true,
+        "type": "Variable",
+        "typeCode": 0,
+        "dims": 1,
+        "units": "",
+        "posFlow": {
+          "x": 1447.4832342392872,
+          "y": 1748.84618658035
+        },
+        "a": "alpha"
+      },
+      {
+        "id": "n_68d4ce1",
+        "customLoop": false,
+        "distribution": "Poisson",
+        "loopStart": "",
+        "loopEnd": "",
+        "params": {
+          "mu": "lambda1"
+        },
+        "type": "Observer",
+        "typeCode": 4,
+        "value": "messages1",
+        "posFlow": {
+          "x": 1929.8845548315612,
+          "y": 851.5712964444482
+        },
+        "mu": "lambda1"
+      },
+      {
+        "id": "n_3f3df52",
+        "customLoop": false,
+        "distribution": "Poisson",
+        "loopStart": "",
+        "loopEnd": "",
+        "params": {
+          "mu": "lambda2"
+        },
+        "type": "Observer",
+        "typeCode": 4,
+        "value": "messages2",
+        "posFlow": {
+          "x": 1926.3432251296124,
+          "y": 1103.6079589699666
+        },
+        "mu": "lambda2"
+      }
+    ],
+    "methodParams": {
+      "chains": "3",
+      "samples": "10000",
+      "lag": "5",
+      "burn": "1000"
+    }
+  },
+  {
+    "modelParams": {
+      "name": "data",
+      "description": "",
+      "steps": 1,
+      "method": "deterministic",
+      "include": [],
+      "customCode": "",
+      "table": true,
+      "type": "dataframe"
+    },
+    "data": [
+      [
+        "m"
+      ],
+      [
+        "13"
+      ],
+      [
+        "24"
+      ],
+      [
+        "8"
+      ],
+      [
+        "24"
+      ],
+      [
+        "7"
+      ],
+      [
+        "35"
+      ],
+      [
+        "14"
+      ],
+      [
+        "11"
+      ],
+      [
+        "15"
+      ],
+      [
+        "11"
+      ],
+      [
+        "22"
+      ],
+      [
+        "22"
+      ],
+      [
+        "11"
+      ],
+      [
+        "57"
+      ],
+      [
+        "11"
+      ],
+      [
+        "19"
+      ],
+      [
+        "29"
+      ],
+      [
+        "6"
+      ],
+      [
+        "19"
+      ],
+      [
+        "12"
+      ],
+      [
+        "22"
+      ],
+      [
+        "12"
+      ],
+      [
+        "18"
+      ],
+      [
+        "72"
+      ],
+      [
+        "32"
+      ],
+      [
+        "9"
+      ],
+      [
+        "7"
+      ],
+      [
+        "13"
+      ],
+      [
+        "19"
+      ],
+      [
+        "23"
+      ],
+      [
+        "27"
+      ],
+      [
+        "20"
+      ],
+      [
+        "6"
+      ],
+      [
+        "17"
+      ],
+      [
+        "13"
+      ],
+      [
+        "10"
+      ],
+      [
+        "14"
+      ],
+      [
+        "6"
+      ],
+      [
+        "16"
+      ],
+      [
+        "15"
+      ],
+      [
+        "7"
+      ],
+      [
+        "2"
+      ],
+      [
+        "15"
+      ],
+      [
+        "15"
+      ],
+      [
+        "19"
+      ],
+      [
+        "70"
+      ],
+      [
+        "49"
+      ],
+      [
+        "7"
+      ],
+      [
+        "53"
+      ],
+      [
+        "22"
+      ],
+      [
+        "21"
+      ],
+      [
+        "31"
+      ],
+      [
+        "19"
+      ],
+      [
+        "11"
+      ],
+      [
+        "18"
+      ],
+      [
+        "20"
+      ],
+      [
+        "12"
+      ],
+      [
+        "35"
+      ],
+      [
+        "17"
+      ],
+      [
+        "23"
+      ],
+      [
+        "17"
+      ],
+      [
+        "4"
+      ],
+      [
+        "2"
+      ],
+      [
+        "31"
+      ],
+      [
+        "30"
+      ],
+      [
+        "13"
+      ],
+      [
+        "27"
+      ],
+      [
+        "0"
+      ],
+      [
+        "39"
+      ],
+      [
+        "37"
+      ],
+      [
+        "5"
+      ],
+      [
+        "14"
+      ],
+      [
+        "13"
+      ],
+      [
+        "22"
+      ]
+    ],
+    "loading": false,
+    "preview": false,
+    "pipeline": {
+      "source": {
+        "type": "none",
+        "format": "",
+        "url": "",
+        "file": "",
+        "dataframe": "",
+        "stream": null
+      },
+      "parse": {
+        "delimiter": "",
+        "hasHeader": true,
+        "customHeader": "",
+        "comment": ""
+      },
+      "structure": {
+        "columns": [],
+        "showAll": true
+      },
+      "filters": [],
+      "output": {
+        "toMemory": true,
+        "toStream": false,
+        "format": "csv"
+      },
+      "processed": 0,
+      "progress": 0
+    },
+    "methodParams": {
+      "chains": 1,
+      "samples": 1000
+    }
+  }
+]
